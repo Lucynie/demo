@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <script language="JavaScript">
+        document.write("<h1 align=center><font color=red>网页计算器</font></h1>");
+            function account(js)
+            {
+                var x=document.calculate.num1.value;
+                var y=document.calculate.num2.value;
+                var s=document.calculate.sign.value;
+                if((x!=" ")&&(y!=" "))
+                {
+                    if((isNaN(x)==true)||(isNaN(y)==true))
+                    {
+                        alert("请输入数字")
+                        return;
+                    }
+                    switch(js)
+                    {
+                        case "+":
+                            var res=parseFloat(x)+parseFloat(y);
+                            document.calculate.result.value=res;
+                            break;
+                        case"-":
+                            var res=parseFloat(x)-parseFloat(y);
+                            document.calculate.result.value=res;
+                            break;
+                        case"*":
+                            var res=parseFloat(x)*parseFloat(y);
+                            document.calculate.result.value=res;
+                            break;
+                        case"/":
+                            if(parseFloat(y)==0)
+                            {
+                                alert("除数为0，结果为正负无穷大")
+                                return;
+                            }
+                            else
+                            {
+                             var res=parseFloat(x)/parseFloat(y);
+                                document.calculate.result.value=res;
+                            }
+                        default:
+                            alert("您输入的运算符不正确！\n 请重新输入(+,-,*,/)");
+                            return;
+                    }
+                }else
+                    {
+                    alert("请输入操作数")
+                    return;
+                    }
+            }
+    </script>
+</head>
+<body>
+<form name="calculate">
+    <p align="center">操作数1：<input type="text" border="0" name="num1"></p>
+    <p align="center">操作数2：<input type="text" border="0" name="num2"></p>
+    <p align="center">计算结果：<input type="text" border="0" name="result"></p>
+    <p align="center"><input type="hidden" name="sign"></p>
+    <p align="center">
+        <input type="button" name="add" value=" + " onclick="account('+')">
+        <input type="button" name="sub" value=" - " onclick="account('-')">
+        <input type="button" name="mul" value=" * " onclick="account('*')">
+        <input type="button" name="chu" value=" / " onclick="account('/')">
+    </p>
+    <p align="center"><input type="reset" name="clear" value="重置"></p>
+</form>
+</body>
+</html>
